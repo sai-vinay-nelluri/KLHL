@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html style="scroll-behavior: smooth;" xmlns:background-color="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="{% static "images/logo.png" %}">
+    {% load staticfiles %}
+    <title>Patient or Doctor</title>
+</head>
+<body class="bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <ul class="navbar-nav mr-auto">
+            <li class="navbar-item"><a class="navbar-brand" href="#">Patient and Doctor Data Management</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'patient-home' %}">Patient application</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'doctor-home' %}">Doctor application</a></li>
+            <li class="nav-item"><a class="nav-link" id="about-link" href="#about">About us</a> </li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'feedback' %}" data-toggle="modal" data-target="#feedBackModal">Feedback</a></li>
+        </ul>
+    </nav>
+    <br>
+    <div id="feedBackModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Feedback</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" role="form" id="formFeedback" action="{% url 'feedback' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name1">Name</label>
+                            <input type="text" class="form-control form-control-lg" name="name1" id="name1" required>
+                            <hr>
+                            <label for="email1">Email</label>
+                            <input type="email" class="form-control form-control-lg" name="email1" id="email1" required>
+                            <hr>
+                            <label for="textarea1">Suggestions</label>
+                            <textarea rows="5" cols="50" id="textarea1" name="message1"></textarea>
+                            <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                            <input type="submit" class="btn btn-dark btn-lg float-right" id="btnLogin" value="Send">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="background-color:whitesmoke;border-radius:5px;">
+        <hr>
+        <div class="row">
+            <h1 class="mx-auto text-uppercase"><strong>PATIENT AND DOCTOR DATA MANAGEMENT</strong></h1>
+        </div>
+        <img  style="width:100%;height:100%;" src="{% static 'images/base.jpg' %}" alt="Image here!">
+        <hr>
+        <h1><strong>New to the website?</strong></h1>
+        <h3>If you are a doctor then navigate to the doctor application and register.You can create posts and update your patients data online.</h3>
+        <hr>
+        <h3>If you are a patient then navigate to patient application and register.You can store your reports and previous prescribtions online and can access them anytime and anywhere.</h3>
+        <div style="text-align: center">
+            <a class="btn btn-outline-dark btn-lg" href="{% url "patient-home" %}" style="margin-right: 10px;">Patient application</a>
+            <a class="btn btn-outline-dark btn-lg" href="{% url "doctor-home" %}" style="margin-left: 10px;">Doctor application</a>
+        </div>
+        <hr>
+    </div>
+    <div class="container" id="about" style="background-color: whitesmoke;border-radius: 5px;">
+        <div class="row">
+            <h1 class="mx-auto"><strong>OUR AMAZING TEAM</strong></h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static "developers/sai.jpeg" %}">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Nelluri Sai Vinay</h4>
+                        <p class="card-text text-light">Full stack developer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static "developers/hareesh.jpg" %}">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Menikonda Hareesh</h4>
+                        <p class="card-text text-light">Front-end developer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static "developers/kedar.jpeg" %}">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Ramaraju Veereswara Kedar</h4>
+                        <p class="card-text text-light">Back-end developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static "developers/swathi.jpeg" %}">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Pitchuka Swathi</h4>
+                        <p class="card-text text-light">CSS Stylist</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static "developers/maheeja.jpeg" %}">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Padarthi Maheeja</h4>
+                        <p class="card-text text-light">JavaScript Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <hr>
+    <footer class="page-footer font-small cyan darken-3">
+        <div class="container bg-light" style="max-width:100%;text-align: center;">
+            <hr>
+            <u>Contact us:</u>
+            <div class="row">
+                <div class="col-2">
+                    <a class="btn btn-outline-primary" href="https://www.facebook.com/sai.heiscrazy" target="_blank"><i class="fa fa-facebook pr-1"></i>Facebook</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-info" href="https://twitter.com/saiheiscrazy" target="_blank"><i class="fa fa-twitter pr-1"></i>Twitter</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-danger" href="https://www.instagram.com/sai_fullstack_developer" target="_blank"><i class="fa fa-instagram pr-1"></i>Instagram</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-warning" href="https://stackoverflow.com/users/10035766/sai-vinay-nelluri?tab=profile" target="_blank"><i class="fa fa-stack-overflow pr-1"></i>Stack overflow</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-success" href="https://klhackleague.slack.com/messages" target="_blank"><i class="fa fa-slack pr-1"></i>Slack</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-dark" href="https://github.com/sai-vinay-nelluri" target="_blank"><i class="fa fa-github pr-1"></i>Github</a>
+                </div>
+            </div>
+        </div>
+      <div class="footer-copyright text-center py-3" style="background-color:whitesmoke;width:100%;">
+          © 2018 Copyright: Pythoneers
+      </div>
+  </footer>
+    <style>
+        .card-img-top{
+            height:300px;
+        }
+        .card-img-top,.card-body{
+            border-radius: 5px;
+        }
+        .card-img-top{
+            border: 2px solid black;
+        }
+    </style>
+</body>
+</html>
